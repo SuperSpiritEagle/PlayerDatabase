@@ -141,7 +141,6 @@ namespace PlayerDatabase
                 ChangePlayerStatus(true, false, status);
             }
 
-
             private void ChangePlayerStatus(bool canChange, bool isBanned, string status)
             {
                 ShowInfo();
