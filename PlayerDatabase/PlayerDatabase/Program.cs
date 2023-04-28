@@ -40,7 +40,7 @@ namespace PlayerDatabase
                                       $"{CommandExit} - выйти");
 
                     userInput = Console.ReadLine();
-                    
+
                     Console.Clear();
 
                     switch (userInput)
@@ -71,7 +71,7 @@ namespace PlayerDatabase
 
                         default:
                             break;
-                    } 
+                    }
                 }
             }
 
@@ -167,28 +167,27 @@ namespace PlayerDatabase
             private int CreateIdNumber()
             {
                 bool isWork = true;
-                int IdNumber = 0;
+                int identifire = 0;
 
                 while (isWork)
                 {
-                    int minIndex = 0;
-                    int maxIndex = 100;
-                    IdNumber = _random.Next(minIndex, maxIndex);
+                    int maxIndex = 1000;
+                    identifire = _random.Next(maxIndex);
 
-                    if (SearchMatch(IdNumber,out int index) == false)
+                    if (SearchMatch(identifire, out int index) == false)
                     {
                         isWork = false;
                     }
                 }
 
-                return IdNumber;
+                return identifire;
             }
 
             private bool SearchMatch(int idNumber, out int index)
             {
                 for (int i = 0; i < _players.Count; i++)
                 {
-                    if (_players[i].IdNumber == idNumber)
+                    if (_players[i].Identifire == idNumber)
                     {
                         index = i;
                         return true;
@@ -206,20 +205,20 @@ namespace PlayerDatabase
         private string _name;
         private int _level;
 
-        public Player(string name, int level, int idNumber)
+        public Player(string name, int level, int identifire)
         {
             _name = name;
             _level = level;
-            IdNumber = idNumber;
+            Identifire = identifire;
             IsBanned = false;
         }
 
-        public int IdNumber { get; private set; }
+        public int Identifire { get; private set; }
         public bool IsBanned { get; private set; }
 
         public void StatsDatabase()
         {
-            Console.WriteLine($"{IdNumber}: имя - {_name}, уровень - {_level}, бан - {IsBanned}");
+            Console.WriteLine($"{Identifire}: имя - {_name}, уровень - {_level}, бан - {IsBanned}");
         }
 
         public void ChangeBooleanValue(bool isBanned)
